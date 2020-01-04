@@ -1,0 +1,16 @@
+{
+  "name": "baas-test-sdk",
+  "version": "1.0.0",
+  "description": "SDK for BaaS",
+  "main": "dist/client.js",
+  "types": "dist/client.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.7.4"
+  }
+}
