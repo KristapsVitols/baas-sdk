@@ -1,18 +1,19 @@
-import {InstanceRetriever} from './instance-retriever';
+type AppCredentials = {
+    appUrl: string;
+    appKey: string;
+}
 
 export class BaaSClient {
-    private instance: any;
+    private readonly appUrl: string;
+    private readonly appKey: string;
 
-    constructor(instanceId: string) {
-        this.initialize(instanceId);
+    constructor(credentials: AppCredentials) {
+        this.appUrl = credentials.appUrl;
+        this.appKey = credentials.appKey;
     }
 
-    public static createClient(instanceId: string) {
-        return new this(instanceId);
-    }
-
-    public initialize(instanceId: string) {
-        this.instance = InstanceRetriever.getInstance(instanceId);
+    public static initializeApp(credentials: AppCredentials) {
+        return new this(credentials);
     }
 
     public async getData(path: string) {
@@ -22,6 +23,6 @@ export class BaaSClient {
     }
 
     private getRequest(path: string) {
-        return fetch(`${this.instance.url}/${path}`);
+        return fetch(`${this.appUrl}${path}`);
     }
 }
